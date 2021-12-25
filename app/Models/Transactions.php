@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Discounts extends Model
+class Transactions extends Model
 {
     use HasFactory;
 
-    protected $table = 'discounts';
+    protected $table = 'transactions';
     protected $guarded = [];
 
     public function Products()
     {
-        return $this->hasMany(Products::class, 'discount_id');
+        return $this->hasOne(Products::class, 'id');
     }
 }

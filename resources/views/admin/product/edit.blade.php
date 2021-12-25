@@ -69,14 +69,8 @@
                     </div>
                     <div class="form-group">
                         <label for="discount">Discount</label>
-                        <select class="form-control" id="discount" name="discount_id">
-                            <option selected disabled class="bg-secondary">Choose Discount</option>
-                            <option value="">No Discount</option>
-                            @foreach ($discounts as $d)
-                            <option value="{{$d->id}}" {{ $products->discount_id == $d->id ? 'selected' : null }}>
-                                {{$d->disscount}} </option>
-                            @endforeach
-                        </select>
+                        <input id="discount" class="form-control" name="discount"
+                            value="{{ $products->discount }}"></input>
                         @error('discount')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror

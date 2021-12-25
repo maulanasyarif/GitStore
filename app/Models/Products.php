@@ -12,8 +12,13 @@ class Products extends Model
     protected $table = 'products';
     protected $guarded = [];
 
-    public function Discounts()
+    public function Carts()
     {
-        return $this->belongsTo(Discounts::class, 'discount');
+        return $this->hasOne(Carts::class, 'id');
+    }
+    
+    public function Transactions()
+    {
+        return $this->hasMany(Transactions::class, 'product_id');
     }
 }

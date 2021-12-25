@@ -1,7 +1,7 @@
 <html>
 
 <head></head>
-<title>Login</title>
+<title>Register</title>
 
 <body>
     <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -30,21 +30,29 @@
     <main class="py-4">
         <div class="container py-5 mt-4">
             <div class="d-flex justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="card text-center border-dark mb-3 shadow bg-dark">
                         <div class="card-header text-white">
-                            Please Login !!!
+                            Please Regis !!!
                         </div>
                         <div class="card-body shadow">
-                            <form method="post" action="{{ route('customLoginAdmin') }}">
+                            <form method="POST" action="{{ route('processRegis') }}">
                                 @csrf
+                                <div class="form-group row text-white mb-3">
+                                    <label for="name" class="col-sm-4 col-form-label text-md-right">Store Name</label>
+
+                                    <div class="col-md-6">
+                                        <input id="name" type="text" class="form-control" name="name" required
+                                            autofocus>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row text-white mb-3">
                                     <label for="email" class="col-sm-4 col-form-label text-md-right">Email</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="text" class="form-control" name="email" value=""
-                                            required autofocus>
-
+                                        <input id="email" type="email" class="form-control" name="email" required
+                                            autofocus>
                                     </div>
                                 </div>
 
@@ -54,14 +62,13 @@
                                     <div class="col-md-6">
                                         <input id="password" type="password" class="form-control" name="password"
                                             required>
-
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            Login
+                                            Register
                                         </button>
                                     </div>
                                 </div>

@@ -45,7 +45,6 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100 py-4">
@@ -54,7 +53,7 @@
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ route('admin.dashboard') }}">GitStore</a>
+                <a class="navbar-brand" href="/user/dashboard">GitStore</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -62,14 +61,14 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ route ('product.index') }}">Products</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('user.carts') }}">Cart</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route ('shipping.index') }}" tabindex="-1"
-                                aria-disabled="true">Shipping</a>
+                            <a class="nav-link" href="{{ route('user.history') }}" tabindex="-1"
+                                aria-disabled="true">History</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route ('logout') }}">Logout</a>
+                            <a class="nav-link" href="{{ route ('user.logout') }}">Logout</a>
                         </li>
                     </ul>
                     <form class="d-flex">

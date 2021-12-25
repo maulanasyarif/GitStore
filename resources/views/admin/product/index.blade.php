@@ -31,7 +31,7 @@
                         <td>{{$p->product_name}}</td>
                         <td>Rp. {{$p->price}}</td>
                         <td>{{$p->stok}}</td>
-                        <td>{{$p->discounts->discount }}</td>
+                        <td>{{$p->discount }}</td>
                         <form action="{{ route ('product.delete', $p->id) }}" method="POST">
                             @csrf
                             @method('delete')
@@ -123,13 +123,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="discount">Discount</label>
-                                <select class="form-control" id="discount" name="discount_id">
-                                    <option value="" disabled selected class="bg-secondary">Choose Discount</option>
-                                    <option value="">No Discount</option>
-                                    @foreach ($discounts as $discount)
-                                    <option value="{{ $discount->id }}">{{ $discount->discount }}</option>
-                                    @endforeach
-                                </select>
+                                <input id="discount" class="form-control" name="discount"
+                                    value="{{ old('discount') }}"></input>
                                 @error('discount')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror

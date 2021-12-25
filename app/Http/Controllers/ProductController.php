@@ -6,18 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Models\Products;
-use App\Models\Discounts;
 
 class ProductController extends Controller
 {
     public function index()
     {
         $products = Products::latest()->paginate(10);
-        $discounts = Discounts::all();
         
         return view('admin.product.index', [
             'products' => $products,
-            'discounts' => $discounts,
         ]);
     }
 
@@ -40,7 +37,7 @@ class ProductController extends Controller
         $data->desc = $request->desc;
         $data->size = strtoupper($request->size);
         $data->stok = $request->stok;
-        $data->discount = $request->discount_id;
+        $data->discount = $request->discount;
         $data->photo = $request->photo->getClientOriginalName();
         $data->save();
 
@@ -55,10 +52,8 @@ class ProductController extends Controller
 
     public function edit(Products $products)
     {
-        $discounts = Discounts::get();
         return view('admin.product.edit', [
             'products' => $products,
-            'discounts' => $discounts,
         ]);
     }
 
@@ -82,7 +77,7 @@ class ProductController extends Controller
         $size = strtoupper($request->size);
         $stok = $request->stok;
         $desc = $request->desc;
-        $discount_id = $request->discount_id;
+        $discount = $request->discount;
 
         if($request->photo == "")
         {
@@ -94,7 +89,7 @@ class ProductController extends Controller
                     'size' => $size,
                     'stok' => $stok,
                     'desc' => $desc,
-                    'discount_id' => $discount_id,
+                    'discount' => $discount,
             ]);
         } else {
                 
@@ -111,7 +106,7 @@ class ProductController extends Controller
                     'size' => $size,
                     'stok' => $stok,
                     'desc' => $desc,
-                    'discount_id' => $discount_id,
+                    'discount' => $discount,
                     'photo' => $fileName,
                 ]);
                     
