@@ -68,6 +68,9 @@
                                 aria-disabled="true">History</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.account') }}">Account</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route ('user.logout') }}">Logout</a>
                         </li>
                     </ul>

@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->string('phone_number');
             $table->string('email');
             $table->string('address');
-            $table->string('product_id')->nullable();
+            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');;
             $table->string('shipping_id')->nullable();
             $table->string('total');
             $table->timestamps();

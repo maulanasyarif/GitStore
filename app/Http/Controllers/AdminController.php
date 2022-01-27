@@ -124,7 +124,7 @@ class AdminController extends Controller
             'total' => $total,
         ]);
         
-        return redirect('admin/history');
+        return redirect('admin/dashboard');
     }
 
     public function destroyOrder(Request $request)
@@ -138,7 +138,7 @@ class AdminController extends Controller
         $id;
         
         $deleteHasil = Transactions::find($id, 'id')->delete();
-        return redirect('admin/history')->with('error', 'Data has been deleted!');
+        return redirect('admin/dashboard')->with('error', 'Data has been deleted!');
     }
 
 }

@@ -28,7 +28,7 @@
                         <td>{{$t->name}}</td>
                         <td>{{$t->phone_number}}</td>
                         <td>{{$t->address}}</td>
-                        <td>{{$t->products->product_name}}</td>
+                        <td>{{$t->product_id}}</td>
                         <td>Rp. {{$t->total}}</td>
                         <td>
                             <form action="{{route('admin.approveOrder', $t->id)}}" method="post">

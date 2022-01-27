@@ -16,7 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
-        // 'guard' => 'admins',
+        // 'guard' => 'web',
         // 'passwords' => 'admins',
     ],
 
@@ -43,16 +43,29 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        // 'admins' => [
-        //     'redirectTo' => 'admin.product.index',
-        //     'driver' => 'session',
-        //     'provider' => 'admins',  
-        // ],
         // 'api' => [
         //     'driver' => 'token',
-        //     'provider' => 'admin',
-        //     'hash' => false,
+        //     'provider' => 'users',
         // ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
+
+        'api-admin' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'api-user' => [
+            'driver' => 'token',
+            'provider' => 'user',
+        ],
 
     ],
 
@@ -78,10 +91,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        // 'admins' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Models\Admin::class,
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

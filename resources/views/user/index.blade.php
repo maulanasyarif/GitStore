@@ -41,7 +41,7 @@
                         <title>{{ $p->product_name }}</title>
                         <div class="card-body">
                             <strong>{{ $p->product_name }}</strong> <br>
-                            <small class="text-muted">Rp.{{ $p->price }}</small>&nbsp;&nbsp;&nbsp;
+                            <small class="text-decoration-line-through">Rp.{{ $p->price }}</small>&nbsp;&nbsp;&nbsp;
                             <strong class="solid">Rp.{{$result}}</strong>
                             <div class="d-flex justify-content-between align-items-center">
                                 <form action="{{ route('user.storeCarts') }}" method="post">

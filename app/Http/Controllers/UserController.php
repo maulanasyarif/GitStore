@@ -28,7 +28,8 @@ class UserController extends Controller
                 $discount = $p->discount;
                 if (!empty($discount))
                 {
-                    $result = number_format(($discount/100) * $price, 3);
+                    $disc = number_format(($discount/100) * $price, 3);
+                    $result = number_format($price-$disc, 3);
                     
                 }
             }
@@ -101,7 +102,7 @@ class UserController extends Controller
     //after login
     public function dashboard()
     {
-        $products = Products::all()->random(3);
+        $products = Products::all();
         
         foreach($products as $p)
         {
@@ -279,6 +280,60 @@ class UserController extends Controller
     {   
         $carts->delete();
         return redirect('user/carts');
+    }
+
+    public function account()
+    {
+        $id     = Auth::user()->id;
+        $user   = User::find($id)->first();
+
+        return view('user/account', [
+            'status'    => 200,
+            'user'      => $user,
+        ]);
+    }
+
+    public function editAccount()
+    {
+        return view('user/edit-account');
+    }
+
+    public function updateAccount(Request $request)
+    {
+        $id = Auth::user()->id;
+        $user  = User::find($id);
+
+        $name             = $request->name;
+        $birth            = $request->birth;
+        $gender           = $request->gender;
+        $phone_number     = $request->phone_number;
+        $address          = $request->address;
+        
+        if($request->image == "")
+        {
+            $user->update([
+                'name' => $name,
+                'birth' => $birth,
+                'gender' => $gender,
+                'phone_number' => $phone_number,
+                'address' => $address,
+            ]);
+        } else {
+            
+                $image = md5($request->image) . '.' . $request->image->extension('photo');;
+                $request->image->storeAs('public/assets/photos/user', $image);
+                
+                $user->update([
+                    'name' => $name,
+                    'birth' => $birth,
+                    'gender' => $gender,
+                    'phone_number' => $phone_number,
+                    'address' => $address,
+                    'image' => $image,
+                ]);
+                    
+            }
+        return redirect('user/account');
     }
 
 }

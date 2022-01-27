@@ -1,5 +1,5 @@
 @extends('user.template.app')
-@section('title', 'Dashboard')
+@section('title', 'Checkout')
 @section('content')
 
 <div class="container">
@@ -61,10 +61,8 @@
                     <div class="row g-3">
                         <div class="col-8">
                             <label for="name" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                            <div class=" invalid-feedback">
-                                Valid name is required.
-                            </div>
+                            <input type="text" class="form-control" id="name" name="name"
+                                value="{{ Auth::user()->name }}" readonly>
                         </div>
 
                         <div class="col-8">
@@ -81,7 +79,7 @@
                         <div class="col-8">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                placeholder="you@example.com">
+                                placeholder="you@example.com" value="{{ Auth::user()->email }}" readonly>
                             <div class="invalid-feedback">
                                 Please enter a valid email address for shipping updates.
                             </div>
@@ -127,9 +125,9 @@
                         </div> -->
                     </div>
 
-                    <hr class="my-4">
+                    <!-- <hr class="my-4"> -->
 
-                    <h4 class="mb-3">Payment</h4>
+                    <!-- <h4 class="mb-3">Payment</h4>
 
                     <div class="my-3">
                         <div class="form-check">
@@ -149,7 +147,7 @@
                             <input id="cod" name="paymentMethod" type="radio" class="form-check-input" required>
                             <label class="form-check-label" for="cod">Cash on Delivery</label>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- <div class="row gy-3">
                         <div class="col-md-6">

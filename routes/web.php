@@ -71,4 +71,9 @@ Route::prefix('user')->as('user.')->group(function () {
     Route::get('/carts', [UserController::class, 'carts'])->name('carts');
     Route::post('/storeCarts', [UserController::class, 'storeCarts'])->name('storeCarts');
     Route::delete('/deleteCarts/{carts:id}', [UserController::class, 'destroyCart'])->name('deleteCarts');
+
+    //account
+    Route::get('/account', [UserController::class, 'account'])->name('account');
+    Route::get('/accountEdit', [UserController::class, 'editAccount'])->name('accountEdit');
+    Route::patch('/updateAccount/{user:id}', [UserController::class, 'updateAccount'])->name('updateAccount');
 });
